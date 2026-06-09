@@ -4,6 +4,7 @@ import { toast } from "sonner";
 
 // ─── Logos Storage Paths ────────────────────────────────────────────────────
 const LOGO_DIGITUS = "/manus-storage/digitus-marca-completa_4bf05e71.png";
+const LOGO_DIGITUS_NORMAL = "/manus-storage/digitus-marca-normal_b7fa5e98.png";
 const PARTNERS = [
   { name: "FEPESA", src: "/manus-storage/fepesa_8855531c.jpg" },
   { name: "CEDIM", src: "/manus-storage/cedim_8de470eb.png" },
@@ -175,93 +176,105 @@ function HeroSection() {
         style={{ background: "oklch(0.65 0.18 240)" }}
       />
 
-      <div className="container relative z-10 pt-24 pb-16">
-        <div className="max-w-4xl mx-auto text-center">
-          <div
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold mb-8 animate-fade-in"
-            style={{
-              background: "oklch(0.55 0.20 240 / 0.15)",
-              border: "1px solid oklch(0.55 0.20 240 / 0.4)",
-              color: "oklch(0.75 0.15 240)",
-            }}
-          >
-            <span
-              className="w-1.5 h-1.5 rounded-full animate-pulse"
-              style={{ background: "oklch(0.75 0.15 240)" }}
-            />
-            Inteligência de Dados &amp; Consultoria Estratégica
-          </div>
-
-          <h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 animate-fade-in-up"
-            style={{ animationDelay: "100ms" }}
-          >
-            <span className="digitus-text-gradient">Transformamos Dados</span>
-            <br />
-            <span className="text-foreground">em Decisões</span>
-            <br />
-            <span className="text-foreground">Estratégicas</span>
-          </h1>
-
-          <p
-            className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in-up"
-            style={{ animationDelay: "200ms" }}
-          >
-            A Digitus é especializada em inteligência de dados, consultoria estratégica
-            e soluções tecnológicas que impulsionam o crescimento sustentável das
-            organizações públicas e privadas.
-          </p>
-
-          <div
-            className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up"
-            style={{ animationDelay: "300ms" }}
-          >
-            <a
-              href="#solucoes"
-              className="px-8 py-3.5 rounded-md font-semibold text-sm transition-all duration-200 hover:scale-105 hover:shadow-lg"
+            <div className="container relative z-10 pt-28 pb-16">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+          {/* Left: content */}
+          <div className="flex-1 max-w-2xl">
+            <div
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold mb-8 animate-fade-in"
               style={{
-                background: "oklch(0.55 0.20 240)",
-                color: "oklch(0.98 0.005 240)",
-                boxShadow: "0 4px 24px oklch(0.55 0.20 240 / 0.3)",
+                background: "oklch(0.55 0.20 240 / 0.15)",
+                border: "1px solid oklch(0.55 0.20 240 / 0.4)",
+                color: "oklch(0.75 0.15 240)",
               }}
             >
-              Conheça Nossas Soluções
-            </a>
-            <a
-              href="#contato"
-              className="px-8 py-3.5 rounded-md font-semibold text-sm transition-all duration-200 hover:bg-secondary"
+              <span
+                className="w-1.5 h-1.5 rounded-full animate-pulse"
+                style={{ background: "oklch(0.75 0.15 240)" }}
+              />
+              Inovação desde 2013
+            </div>
+            <h1
+              className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6 animate-fade-in-up"
+              style={{ animationDelay: "100ms" }}
+            >
+              <span className="digitus-text-gradient">Transformamos</span>
+              <br />
+              <span className="text-foreground">Dados em </span>
+              <span className="digitus-text-gradient">Decisões</span>
+              <br />
+              <span className="digitus-text-gradient">Estratégicas</span>
+            </h1>
+            <p
+              className="text-lg md:text-xl text-muted-foreground mb-10 leading-relaxed animate-fade-in-up"
+              style={{ animationDelay: "200ms" }}
+            >
+              A Digitus é especialista em Inteligência de Dados, Consultoria
+              Estratégica e Gerenciamento Eletrônico. Ajudamos instituições
+              a extrair o máximo valor de suas informações com segurança e precisão.
+            </p>
+            <div
+              className="flex flex-col sm:flex-row gap-4 animate-fade-in-up"
+              style={{ animationDelay: "300ms" }}
+            >
+              <a
+                href="#solucoes"
+                className="px-8 py-3.5 rounded-md font-semibold text-sm transition-all duration-200 hover:scale-105 hover:shadow-lg text-center"
+                style={{
+                  background: "oklch(0.55 0.20 240)",
+                  color: "oklch(0.98 0.005 240)",
+                  boxShadow: "0 4px 24px oklch(0.55 0.20 240 / 0.3)",
+                }}
+              >
+                Nossas Soluções
+              </a>
+              <a
+                href="#contato"
+                className="px-8 py-3.5 rounded-md font-semibold text-sm transition-all duration-200 hover:bg-secondary text-center"
+                style={{
+                  border: "1px solid oklch(0.35 0.05 240)",
+                  color: "oklch(0.90 0.01 240)",
+                }}
+              >
+                Agendar Consultoria
+              </a>
+            </div>
+            {/* Stats */}
+            <div
+              className="grid grid-cols-3 gap-6 mt-16 pt-8 animate-fade-in-up"
               style={{
-                border: "1px solid oklch(0.35 0.05 240)",
-                color: "oklch(0.90 0.01 240)",
+                borderTop: "1px solid oklch(0.22 0.03 240)",
+                animationDelay: "400ms",
               }}
             >
-              Fale com um Especialista
-            </a>
-          </div>
-
-          {/* Stats */}
-          <div
-            className="grid grid-cols-3 gap-6 mt-20 pt-10 animate-fade-in-up"
-            style={{
-              borderTop: "1px solid oklch(0.22 0.03 240)",
-              animationDelay: "400ms",
-            }}
-          >
-            {[
-              { value: "9+", label: "Parceiros Estratégicos" },
-              { value: "10+", label: "Anos de Experiência" },
-              { value: "100%", label: "Foco em Resultados" },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div
-                  className="text-2xl md:text-3xl font-bold mb-1"
-                  style={{ color: "oklch(0.75 0.15 240)" }}
-                >
-                  {stat.value}
+              {[
+                { value: "9+", label: "Parceiros Estratégicos" },
+                { value: "10+", label: "Anos de Experiência" },
+                { value: "100%", label: "Foco em Resultados" },
+              ].map((stat) => (
+                <div key={stat.label}>
+                  <div
+                    className="text-2xl md:text-3xl font-bold mb-1"
+                    style={{ color: "oklch(0.75 0.15 240)" }}
+                  >
+                    {stat.value}
+                  </div>
+                  <div className="text-xs md:text-sm text-muted-foreground">{stat.label}</div>
                 </div>
-                <div className="text-xs md:text-sm text-muted-foreground">{stat.label}</div>
-              </div>
-            ))}
+              ))}
+            </div>
+          </div>
+          {/* Right: floating logo */}
+          <div className="flex-1 flex justify-center items-center lg:justify-end animate-fade-in">
+            <img
+              src={LOGO_DIGITUS_NORMAL}
+              alt="Digitus"
+              className="w-full max-w-xs md:max-w-sm lg:max-w-md"
+              style={{
+                animation: "float 6s ease-in-out infinite",
+                filter: "drop-shadow(0 20px 40px oklch(0.55 0.20 240 / 0.25))",
+              }}
+            />
           </div>
         </div>
       </div>
@@ -665,7 +678,22 @@ function ContactSection() {
       setSubmitting(false);
     },
     onError: (err) => {
-      toast.error(err.message || "Erro ao enviar mensagem. Tente novamente.");
+      // tRPC validation errors contain JSON — extract the first human-readable message
+      let friendlyMessage = "Erro ao enviar mensagem. Tente novamente.";
+      try {
+        const parsed = JSON.parse(err.message);
+        if (Array.isArray(parsed) && parsed.length > 0 && parsed[0].message) {
+          friendlyMessage = parsed[0].message;
+        } else if (typeof parsed === "object" && parsed.message) {
+          friendlyMessage = parsed.message;
+        }
+      } catch {
+        // err.message is already a plain string
+        if (err.message && !err.message.startsWith("[") && !err.message.startsWith("{")) {
+          friendlyMessage = err.message;
+        }
+      }
+      toast.error(friendlyMessage);
       setSubmitting(false);
     },
   });
