@@ -8,10 +8,10 @@ const LOGO_DIGITUS_NORMAL = "/manus-storage/digitus-marca-normal_b7fa5e98.png";
 const PARTNERS = [
   { name: "FEPESA", src: "/manus-storage/fepesa_8855531c.jpg" },
   { name: "CEDIM", src: "/manus-storage/cedim_8de470eb.png" },
-  { name: "Sindhospital/AL", src: "/manus-storage/sindhospital_20d3b9d3.jpg" },
+  { name: "Sindhospital/AL", src: "/manus-storage/sindhospital_new_567e5416.png" },
   { name: "AHEAL", src: "/manus-storage/aheal_b467eee4.jpg" },
   { name: "Caleidoscópio", src: "/manus-storage/caleidoscopio_156480ba.png" },
-  { name: "FBH", src: "/manus-storage/fbh_21d12ff3.jpeg" },
+  { name: "FBH", src: "/manus-storage/fbh_logo_web_f0f9a2a3.png" },
   { name: "CAU/AL", src: "/manus-storage/caual_528f2035.png" },
   { name: "CREA/AL", src: "/manus-storage/crea-al_6765ad86.png" },
   { name: "Golden Cross do Brasil", src: "/manus-storage/goldencross_8738c0fc.jpg" },
