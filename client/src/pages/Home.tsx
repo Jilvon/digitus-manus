@@ -6,7 +6,7 @@ import { toast } from "sonner";
 const LOGO_DIGITUS = "/manus-storage/digitus-marca-completa_4bf05e71.png";
 const LOGO_DIGITUS_NORMAL = "/manus-storage/digitus-marca-normal_b7fa5e98.png";
 const PARTNERS = [
-  { name: "FEPESA", src: "/manus-storage/fepesa_8855531c.jpg" },
+  { name: "FEPESA", src: "/manus-storage/fepesa_new_e258d9d7.png" },
   { name: "CEDIM", src: "/manus-storage/cedim_8de470eb.png" },
   { name: "Sindhospital/AL", src: "/manus-storage/sindhospital_new_567e5416.png" },
   { name: "AHEAL", src: "/manus-storage/aheal_b467eee4.jpg" },
