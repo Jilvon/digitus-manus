@@ -18,10 +18,12 @@
 ## Backend
 - [x] Endpoint tRPC para formulário de contato
 - [x] Integração com notifyOwner() para atendimento@digitus.com.vc
+- [x] Integração Brevo API REST para envio real de e-mail para atendimento@digitus.com.vc
+- [x] Sender atendimento@digitus.com.vc verificado no Brevo
 - [x] Validação dos campos do formulário com Zod
 
 ## Qualidade
 - [x] Responsividade mobile/tablet/desktop
 - [x] Animações suaves (CSS + Intersection Observer)
-- [x] Testes vitest para o endpoint de contato (8 testes passando)
+- [x] Testes vitest para o endpoint de contato (10 testes passando)
 - [x] Checkpoint final

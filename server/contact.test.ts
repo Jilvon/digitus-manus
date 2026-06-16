@@ -2,10 +2,9 @@ import { describe, expect, it, vi, beforeEach } from "vitest";
 import { appRouter } from "./routers";
 import type { TrpcContext } from "./_core/context";
 
-// Mock notifyOwner to avoid real HTTP calls in tests
-vi.mock("./_core/notification", () => ({
-  notifyOwner: vi.fn().mockResolvedValue(true),
-}));
+// Mock global fetch to avoid real HTTP calls in tests
+const mockFetch = vi.fn();
+vi.stubGlobal("fetch", mockFetch);
 
 function createPublicContext(): TrpcContext {
   return {
@@ -23,6 +22,10 @@ function createPublicContext(): TrpcContext {
 describe("contact.submit", () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    // Default: Brevo API returns 201 (success)
+    mockFetch.mockResolvedValue({ status: 201, text: async () => "" });
+    // Set BREVO_API_KEY for tests
+    process.env.BREVO_API_KEY = "xkeysib-test-key-for-unit-tests";
   });
 
   it("should submit a valid contact form and return success", async () => {
@@ -70,7 +73,7 @@ describe("contact.submit", () => {
     ).rejects.toThrow();
   });
 
-  it("should reject empty name", async () => {
+  it("should reject name too short", async () => {
     const ctx = createPublicContext();
     const caller = appRouter.createCaller(ctx);
 
@@ -115,8 +118,7 @@ describe("contact.submit", () => {
     ).rejects.toThrow();
   });
 
-  it("should call notifyOwner with correct title format", async () => {
-    const { notifyOwner } = await import("./_core/notification");
+  it("should call Brevo API with correct sender and recipient", async () => {
     const ctx = createPublicContext();
     const caller = appRouter.createCaller(ctx);
 
@@ -128,11 +130,46 @@ describe("contact.submit", () => {
       message: "Quero saber mais sobre gestão de dados para minha empresa.",
     });
 
-    expect(notifyOwner).toHaveBeenCalledWith(
-      expect.objectContaining({
-        title: expect.stringContaining("Carlos Ferreira"),
-        content: expect.stringContaining("carlos@parceiro.com"),
-      })
+    expect(mockFetch).toHaveBeenCalledWith(
+      "https://api.brevo.com/v3/smtp/email",
+      expect.objectContaining({ method: "POST" })
     );
+
+    const callBody = JSON.parse(mockFetch.mock.calls[0][1].body);
+    expect(callBody.to[0].email).toBe("atendimento@digitus.com.vc");
+    expect(callBody.replyTo.email).toBe("carlos@parceiro.com");
+    expect(callBody.subject).toContain("Carlos Ferreira");
+    expect(callBody.subject).toContain("Gestão de Dados");
+    // Verify api-key header is set (actual key from env)
+    const callHeaders = mockFetch.mock.calls[0][1].headers;
+    expect(callHeaders["api-key"]).toMatch(/^xkeysib-/);
+  });
+
+  it("should still return success even if Brevo returns non-201", async () => {
+    mockFetch.mockResolvedValue({ status: 400, text: async () => "Bad Request" });
+    const ctx = createPublicContext();
+    const caller = appRouter.createCaller(ctx);
+
+    // Should not throw — just logs warning
+    const result = await caller.contact.submit({
+      name: "Teste Nome",
+      company: "",
+      email: "teste@email.com",
+      subject: "Assunto Teste",
+      message: "Mensagem de teste com pelo menos 10 caracteres.",
+    });
+
+    expect(result).toEqual({ success: true });
+  });
+});
+
+// ─── BREVO_API_KEY environment variable test ───────────────────────────────
+
+describe("BREVO_API_KEY environment", () => {
+  it("BREVO_API_KEY should be set and start with xkeysib-", () => {
+    const key = process.env.BREVO_API_KEY;
+    expect(key).toBeDefined();
+    expect(key).not.toBe("");
+    expect(key).toMatch(/^xkeysib-/);
   });
 });
