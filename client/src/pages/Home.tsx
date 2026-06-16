@@ -54,7 +54,6 @@ function Header() {
     { label: "Soluções", href: "#solucoes" },
     { label: "Expertise", href: "#expertise" },
     { label: "Parceiros", href: "#parceiros" },
-    { label: "Contato", href: "#contato" },
   ];
 
   return (
@@ -996,7 +995,6 @@ function Footer() {
                 ["Soluções", "#solucoes"],
                 ["Nossa Expertise", "#expertise"],
                 ["Parceiros", "#parceiros"],
-                ["Contato", "#contato"],
               ].map(([label, href]) => (
                 <li key={href}>
                   <a
